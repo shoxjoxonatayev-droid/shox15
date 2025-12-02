@@ -2,21 +2,21 @@ import { useState } from "react";
 
 // 1-vazifa
 export function Header() {
-  return <h2>Header qismi</h2>;
+  return <h2 className="box">Header qismi</h2>;
 }
 
 export function Content() {
-  return <p>Content qismi</p>;
+  return <p className="box">Content qismi</p>;
 }
 
 export function Footer() {
-  return <h3>Footer qismi</h3>;
+  return <h3 className="box">Footer qismi</h3>;
 }
 
 // 2-vazifa
 export function Product(props) {
   return (
-    <div>
+    <div className="box">
       <h3>{props.name}</h3>
       <p>{props.price} so'm</p>
     </div>
@@ -26,7 +26,7 @@ export function Product(props) {
 // 3-vazifa
 export function Student(props) {
   return (
-    <div>
+    <div className="box">
       <h3>{props.name}</h3>
       <p>Yosh: {props.age}</p>
       <p>Sinf: {props.grade}</p>
@@ -38,7 +38,7 @@ export function Student(props) {
 export function Counter() {
   const [count, setCount] = useState(0);
   return (
-    <div>
+    <div className="box">
       <h2>{count}</h2>
       <button onClick={() => setCount(count + 1)}>+</button>
       <button onClick={() => setCount(count - 1)}>-</button>
@@ -50,7 +50,7 @@ export function Counter() {
 export function ToggleText() {
   const [text, setText] = useState("Salom");
   return (
-    <div>
+    <div className="box">
       <h3>{text}</h3>
       <button onClick={() => setText(text === "Salom" ? "Xush kelibsiz!" : "Salom")}>
         O'zgartir
@@ -63,7 +63,7 @@ export function ToggleText() {
 export function LikeButton() {
   const [like, setLike] = useState(0);
   return (
-    <div>
+    <div className="box">
       <h3>Like: {like}</h3>
       <button onClick={() => setLike(like + 1)}>Like 👍</button>
     </div>
@@ -74,8 +74,8 @@ export function LikeButton() {
 export function NameInput() {
   const [name, setName] = useState("");
   return (
-    <div>
-      <input onChange={(e) => setName(e.target.value)} />
+    <div className="box">
+      <input onChange={(e) => setName(e.target.value)} placeholder="Ismingizni kiriting" />
       <p>Salom, {name}</p>
     </div>
   );
@@ -84,16 +84,8 @@ export function NameInput() {
 // 9-vazifa
 export function DarkMode() {
   const [mode, setMode] = useState("light");
-
-  const style = {
-    background: mode === "light" ? "white" : "black",
-    color: mode === "light" ? "black" : "white",
-    padding: "15px",
-    marginTop: "10px",
-  };
-
   return (
-    <div style={style}>
+    <div className={`darkmode`} style={{ backgroundColor: mode === "light" ? "white" : "#222", color: mode === "light" ? "black" : "white" }}>
       <h2>{mode.toUpperCase()} MODE</h2>
       <button onClick={() => setMode(mode === "light" ? "dark" : "light")}>
         O'zgartir
@@ -105,9 +97,9 @@ export function DarkMode() {
 // 10-vazifa
 export function Card(props) {
   return (
-    <div>
+    <div className="card">
       <h3>{props.title}</h3>
-      <img src={props.imgUrl} alt="rasm" width="150" />
+      <img src={props.imgUrl} alt="rasm" />
     </div>
   );
 }
